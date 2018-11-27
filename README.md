@@ -1,5 +1,7 @@
 # PmExample
 
+Tutorial from: https://www.youtube.com/watch?v=X9AggnaEXrM&t=603s
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`

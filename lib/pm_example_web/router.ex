@@ -13,14 +13,20 @@ defmodule PmExampleWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", PmExampleWeb do
-    pipe_through :browser
+  # not using this portion bc no front end
+  # scope "/", PmExampleWeb do
+  #   pipe_through :browser
 
-    get "/", PageController, :index
-  end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", PmExampleWeb do
-  #   pipe_through :api
+  #   get "/", PageController, :index
   # end
+
+  # THIS IS WHAT WE'RE BUILDING OUT
+  # Other scopes may use custom stacks.
+  scope "/api", PmExampleWeb do
+    pipe_through :api # goes thru pipline at line 12
+
+    resources "/projects", ProjectController, only: [:index, :show] # domain/api/projects; we're only doing allowing get reqs
+    # resrouces is equivalent to the following:
+    # get "/project/:id", ProjectController, :show
+  end
 end
