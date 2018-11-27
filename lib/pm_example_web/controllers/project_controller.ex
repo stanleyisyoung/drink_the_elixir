@@ -1,13 +1,15 @@
 defmodule PmExampleWeb.ProjectController do
   use PmExampleWeb, :controller
 
-  alias PmExample.Management
-  alias PmExample.Management.Project
+  alias PmExample.Management  # allows us to just use 'Management.___'
+  alias PmExample.Management.Project # Project.___
 
   action_fallback PmExampleWeb.FallbackController
 
+  # this whole file is the PUBLIC web interface
+  # all logic should be placed in management/respectiveFile.ex context
   def index(conn, _params) do
-    projects = Management.list_projects()
+    projects = Management.list_projects() # calls management/management.ex/list_project()
     render(conn, "index.json", projects: projects)
   end
 
