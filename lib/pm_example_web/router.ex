@@ -26,9 +26,10 @@ defmodule PmExampleWeb.Router do
     pipe_through :api # goes thru pipline at line 12
 
     resources "/projects", ProjectController, only: [:index, :show] # domain/api/projects; we're only doing allowing get reqs
+    resources "/documents", DocumentController, only: [:index, :show]
     # resrouces is equivalent to the following:
     # get "/project/:id", ProjectController, :show
 
-    resources "/"
+    # resources "/"
   end
 end
