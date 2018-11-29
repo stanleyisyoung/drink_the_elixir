@@ -13,6 +13,11 @@ defmodule PmExampleWeb.Router do
     plug :accepts, ["json"]
   end
 
+  # pipe to json_api
+  pipeline :json_api do
+    plug :accepts, ["json"]
+    plug JaSerializer.Deserializer
+  end
   # not using this portion bc no front end
   # scope "/", PmExampleWeb do
   #   pipe_through :browser
@@ -25,11 +30,9 @@ defmodule PmExampleWeb.Router do
   scope "/api", PmExampleWeb do
     pipe_through :api # goes thru pipline at line 12
 
+    # resources auto-gens a bunch of std CRUD routes
     resources "/projects", ProjectController, only: [:index, :show] # domain/api/projects; we're only doing allowing get reqs
     resources "/documents", DocumentController, only: [:index, :show]
-    # resrouces is equivalent to the following:
-    # get "/project/:id", ProjectController, :show
 
-    # resources "/"
   end
 end
