@@ -28,5 +28,7 @@ defmodule PmExampleWeb.Router do
     resources "/projects", ProjectController, only: [:index, :show] # domain/api/projects; we're only doing allowing get reqs
     # resrouces is equivalent to the following:
     # get "/project/:id", ProjectController, :show
+
+    resources "/"
   end
 end
